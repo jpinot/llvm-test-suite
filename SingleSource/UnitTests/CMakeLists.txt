@@ -68,6 +68,11 @@ else()
   list(REMOVE_ITEM Source matrix-types-spec.cpp)
 endif()
 
+if(ARCH STREQUAL "K1C" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+  list(REMOVE_ITEM Source
+    stmtexpr.cpp
+  )
+endif()
 llvm_singlesource()
 
 if (COMPILER_HAS_MATRIX_FLAG)
