@@ -1,6 +1,6 @@
 include(CheckCCompilerFlag)
 
-if(NOT ARCH STREQUAL "K1C")
+if(NOT ARCH STREQUAL "KVX")
   add_subdirectory(C++11)
 endif()
 add_subdirectory(Float)
@@ -10,7 +10,7 @@ add_subdirectory(Threads)
 add_subdirectory(Vector)
 add_subdirectory(X86)
 add_subdirectory(AArch64)
-if(NOT ARCH STREQUAL "K1C")
+if(NOT ARCH STREQUAL "KVX")
   add_subdirectory(Vectorizer)
 endif()
 
@@ -68,7 +68,7 @@ else()
   list(REMOVE_ITEM Source matrix-types-spec.cpp)
 endif()
 
-if(ARCH STREQUAL "K1C" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+if(ARCH STREQUAL "KVX" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
   list(REMOVE_ITEM Source
     stmtexpr.cpp
   )

@@ -51,7 +51,7 @@ if(ARCH STREQUAL "AArch64")
     endif()
   endif()
 endif()
-if(ARCH STREQUAL "K1C")
+if(ARCH STREQUAL "KVX")
   list(REMOVE_ITEM Source
     mandel.c # error: '__builtin_choose_expr' requires a constant expression
   )
