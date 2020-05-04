@@ -1,8 +1,6 @@
 include(CheckCCompilerFlag)
 
-if(NOT ARCH STREQUAL "KVX")
-  add_subdirectory(C++11)
-endif()
+add_subdirectory(C++11)
 add_subdirectory(Float)
 add_subdirectory(Matrix)
 add_subdirectory(SignlessTypes)
@@ -10,9 +8,7 @@ add_subdirectory(Threads)
 add_subdirectory(Vector)
 add_subdirectory(X86)
 add_subdirectory(AArch64)
-if(NOT ARCH STREQUAL "KVX")
-  add_subdirectory(Vectorizer)
-endif()
+add_subdirectory(Vectorizer)
 
 list(APPEND CFLAGS -Wno-implicit-function-declaration -Wno-implicit-int)
 # FIXME: Disable SJLJ tests for now, until EH edges are represented.
@@ -68,16 +64,6 @@ else()
   list(REMOVE_ITEM Source matrix-types-spec.cpp)
 endif()
 
-if(ARCH STREQUAL "KVX" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
-  list(REMOVE_ITEM Source
-    stmtexpr.cpp
-  )
-endif()
-if(ARCH STREQUAL "KVX")
-  # FIXME: Re-enable hardware loops for UnitTests. They are disabled
-  # until T12847 is fixed (hwloops fail on LoopBug2.c).
-list(APPEND CFLAGS -mllvm -disable-kvx-hwloops)
-endif()
 llvm_singlesource()
 
 if (COMPILER_HAS_MATRIX_FLAG)
