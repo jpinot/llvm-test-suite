@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${OPTFLAGS}" CACHE STRING "")
 
 string(CONCAT linkerflags
   "-Tmppadcos_ddr.ld "					# Use DDR
-  "-Wl,--defsym=USER_STACK_SIZE=0x20000 "		# Set stack size to 128KB (SMEM)
+  "-Wl,--defsym=USER_STACK_SIZE=0x100000 "		# Set stack size to 1MB (SMEM)
   "-Wl,--defsym=MPPA_COS_NB_CC=1 "			# Use 1 Cluster (up to 5)
   "-Wl,--defsym=MPPA_COS_MASTER_CC=0 "	 		# Run on Cluster 0
   "-Wl,--defsym=MPPA_COS_NB_CORES_LOG2=0 "		# Use 1 Core (up to log2(16))
